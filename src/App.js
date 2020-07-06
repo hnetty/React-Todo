@@ -1,4 +1,5 @@
 import React from 'react';
+
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
 
@@ -56,6 +57,13 @@ class App extends React.Component {
     })
   }
 
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      tasks: this.state.tasks.filter(item => !tasks.completed)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -64,6 +72,7 @@ class App extends React.Component {
           <TodoList 
             tasks = {this.state.tasks}
             toggleTask={this.toggleTask}
+            clearCompleted={this.clearCompleted}
           />
         </div>
         <div>
